@@ -143,7 +143,7 @@ print(resultat)</code></pre>
     <div class="exercise">
         <h2>🗓️ Exercice 3 : Calendrier et horloge (Format 12h)</h2>
         <p class="enonce">
-            [cite_start]Ecrire un programme python qui affiche le calendrier du mois en cours et une horloge temps réel. [cite: 10]
+            Ecrire un programme python qui affiche le calendrier du mois en cours et une horloge temps réel. 
         </p>
         
         <h3>Code Python</h3>
@@ -371,16 +371,16 @@ rechercher_element(ma_liste, 99)</code></pre>
     <div class="exercise">
         <h2>🗂️ Exercice 8 : Manipulation de fichiers Excel</h2>
         <p class="enonce">
-            [cite_start]Lire et écrire des fichiers Excel en Python en utilisant pandas. [cite: 24]
-            [cite_start]Donner le type de chacune des variables du tableau Excel. [cite: 25]
-            [cite_start]Modifier une valeur de ligne précise et colonne précise. [cite: 25]
-            [cite_start]Concaténer deux liste fichiers Excel. [cite: 26]
-            [cite_start]Afficher des informations générales sur le DataFrame un utilisant info(). [cite: 27]
-            [cite_start]Afficher une colonne spécifique de ce dataFrame. [cite: 27]
-            [cite_start]Afficher une ligne spécifique de ce dataFrame. [cite: 28]
-            [cite_start]Faire une modification de quelques moyennes en utilisant la méthode replace. [cite: 29]
-            [cite_start]Filtrer les étudiants avec une moyenne $>=10$. [cite: 29]
-            [cite_start]Afficher uniquement le sexe М. [cite: 30]
+            Lire et écrire des fichiers Excel en Python en utilisant pandas. 
+            Donner le type de chacune des variables du tableau Excel. 
+            Modifier une valeur de ligne précise et colonne précise. 
+            Concaténer deux liste fichiers Excel. 
+            Afficher des informations générales sur le DataFrame un utilisant info().
+            Afficher une colonne spécifique de ce dataFrame. [cite: 27]
+            Afficher une ligne spécifique de ce dataFrame. [cite: 28]
+            Faire une modification de quelques moyennes en utilisant la méthode replace. 
+            Filtrer les étudiants avec une moyenne $>=10$. 
+            Afficher uniquement le sexe М. 
         </p>
         
         <p class="note">
@@ -405,54 +405,54 @@ data2 = {
 pd.DataFrame(data2).to_excel('etudiants2.xlsx', index=False)
 print("Fichiers Excel factices créés.\n")
 
-# [cite_start] 1. Lire des fichiers Excel [cite: 24] 
+#   Lire des fichiers Excel  
 df = pd.read_excel('etudiants1.xlsx')
 print(" DataFrame (etudiants1.xlsx) lu : ")
 print(df)
 
-# [cite_start] Donner le type de chacune des variables [cite: 25] 
+# Donner le type de chacune des variables 
 print("\n  Types de variables : ")
 print(df.dtypes)
 
-# [cite_start]  Modifier une valeur [cite: 25] 
+# Modifier une valeur 
 print("\n Modification (moyenne de Martin de 9.0 à 9.5) : ")
 df.loc[1, 'moyenne'] = 9.5
 print(df)
 
-# [cite_start] Concaténer deux fichiers [cite: 26] 
+# Concaténer deux fichiers  
 df_extra = pd.read_excel('etudiants2.xlsx')
 df_concat = pd.concat([df, df_extra], ignore_index=True)
 print("\n Concaténation des deux fichiers : ")
 print(df_concat)
 
-# [cite_start] Afficher des informations générales (.info()) [cite: 27]
+# Afficher des informations générales (.info())
 print("\n Informations générales (.info()) : ")
 df_concat.info()
 
-# [cite_start] Afficher une colonne spécifique ('nom') [cite: 27]
+# Afficher une colonne spécifique ('nom')
 print(" Afficher la colonne 'nom' : ")
 print(df_concat['nom'])
 
-# [cite_start] Afficher une ligne spécifique (index 3) [cite: 28] 
+#  Afficher une ligne spécifique (index 3)  
 print("\n Afficher la ligne à l'index 3 : ")
 print(df_concat.loc[3])
 
-# [cite_start] Modification avec replace() [cite: 29] 
+#  Modification avec replace()  
 print("\n  Remplacement (10.0 -> 10.2) : ")
 df_concat['moyenne'] = df_concat['moyenne'].replace(10.0, 10.2)
 print(df_concat[df_concat['sexe'] == 'F'])
 
-# [cite_start] Filtrer (moyenne >= 10) [cite: 29] 
+#  Filtrer (moyenne >= 10)  
 print("\n Filtre (moyenne >= 10) : ")
 admis = df_concat[df_concat['moyenne'] >= 10]
 print(admis)
 
-# [cite_start]  Afficher uniquement le sexe M [cite: 30] 
+# Afficher uniquement le sexe M 
 print("\n  Filtre (sexe == 'M') : ")
 hommes = df_concat[df_concat['sexe'] == 'M']
 print(hommes)
 
-# [cite_start] Écrire le résultat dans un nouveau fichier Excel [cite: 24] 
+# Écrire le résultat dans un nouveau fichier Excel  
 df_concat.to_excel('etudiants_complets.xlsx', index=False)
 print("\nFichier 'etudiants_complets.xlsx' sauvegardé.")
 
@@ -547,7 +547,7 @@ Fichier 'etudiants_complets.xlsx' sauvegardé.
     </div>
 <footer class="text-center mt-12 py-6 bg-slate-100 border-t border-slate-300">
     <p class="text-base font-semibold text-slate-700">
-        © 2025 – TP réalisé par 
+        © 2025 – TP2 réalisé par 
         <span class="text-blue-800 font-bold">Dahane Ahmed Lamine</span>
     </p>
 </footer>
