@@ -234,13 +234,24 @@ tracer_fonctions()</code></pre>
 
         <h3>Sortie</h3>
         <p>L'exécution de ce code Python ouvrira une nouvelle fenêtre affichant les trois graphiques suivants, empilés verticalement :</p>
-        <h3>Visualisation Interactive</h3>
-<p>
-    <a href="[LIEN_VERS_ARTIFACT]" target="_blank" style="display: inline-block; background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-        Voir les graphiques interactifs
-    </a>
-</p>
+        
+   
         <p class="note">L'image ci-dessus est une représentation de la fenêtre qui s'ouvre lorsque vous exécutez le code.</p>
+        <h3>Visualisation Interactive des Graphiques</h3>
+
+<div style="background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #e74c3c; margin-top: 0;">sin(t)</h4>
+    <canvas id="sinChart" style="max-height: 300px;"></canvas>
+</div>
+
+<div style="background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #27ae60; margin-top: 0;">cos(t)</h4>
+    <canvas id="cosChart" style="max-height: 300px;"></canvas>
+</div>
+
+<div style="background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <h4 style="color: #3498db; margin-top: 0;">exp(-t)</h4>
+    <canvas id="expChart" style="max-height: 300px;"></canvas>
     </div>
     
     <div class="exercise">
@@ -556,5 +567,100 @@ Fichier 'etudiants_complets.xlsx' sauvegardé.
         <span class="text-blue-800 font-bold">Dahane Ahmed Lamine</span>
     </p>
 </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+        <script>
+    // Générer les données
+    const generateData = (func, steps = 500, max = 5) => {
+        const data = [];
+        for (let i = 0; i <= steps; i++) {
+            const t = (i / steps) * max;
+            data.push({ x: t, y: func(t) });
+        }
+        return data;
+    };
+            // Configuration commune
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: (context) => `y = ${context.parsed.y.toFixed(4)}`
+                }
+            }
+        },
+        scales: {
+            x: {
+                type: 'linear',
+                title: { display: true, text: 't (temps)' },
+                grid: { color: '#e0e0e0' }
+            },
+            y: {
+                grid: { color: '#e0e0e0' }
+            }
+        }
+    };
+            // Graphique sin(t)
+    new Chart(document.getElementById('sinChart'), {
+        type: 'line',
+        data: {
+            datasets: [{
+                data: generateData(Math.sin),
+                borderColor: '#e74c3c',
+                borderWidth: 2,
+                pointRadius: 0,
+                tension: 0.4
+            }]
+        },
+        options: {
+            ...commonOptions,
+            scales: {
+                ...commonOptions.scales,
+                y: { ...commonOptions.scales.y, min: -1.2, max: 1.2 }
+            }
+        }
+    });
+            // Graphique cos(t)
+    new Chart(document.getElementById('cosChart'), {
+        type: 'line',
+        data: {
+            datasets: [{
+                data: generateData(Math.cos),
+                borderColor: '#27ae60',
+                borderWidth: 2,
+                pointRadius: 0,
+                tension: 0.4
+            }]
+        },
+        options: {
+            ...commonOptions,
+            scales: {
+                ...commonOptions.scales,
+                y: { ...commonOptions.scales.y, min: -1.2, max: 1.2 }
+            }
+        }
+    });
+            // Graphique exp(-t)
+    new Chart(document.getElementById('expChart'), {
+        type: 'line',
+        data: {
+            datasets: [{
+                data: generateData(t => Math.exp(-t)),
+                borderColor: '#3498db',
+                borderWidth: 2,
+                pointRadius: 0,
+                tension: 0.4
+            }]
+        },
+        options: {
+            ...commonOptions,
+            scales: {
+                ...commonOptions.scales,
+                y: { ...commonOptions.scales.y, min: 0, max: 1.1 }
+            }
+        }
+    });
+</script>
 </body>
 </html>
