@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions TP2 Python</title>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+        }
+        .exercise {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        p, .enonce {
+            font-size: 1.1em;
+            color: #555;
+        }
+        .enonce {
+            font-style: italic;
+            background-color: #fdfdfd;
+            border-left: 5px solid #eee;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        
+        /* Styles pour les blocs de code et de sortie */
+        pre {
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.95em;
+        }
+        
+        /* Code Python */
+        pre.code {
+            background-color: #2d2d2d;
+            color: #f1f1f1;
+        }
+        
+        /* Sortie de console */
+        pre.output {
+            background-color: #f0f0f0;
+            color: #444;
+            border: 1px dashed #ccc;
+        }
+        
+        /* Notes importantes */
+        .note {
+            font-style: italic;
+            color: #d35400;
+            background-color: #fef9e7;
+            border: 1px solid #f9e79f;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Solutions TP2 - Programmation Avancée en Python</h1>
+
+    <div class="exercise">
+        <h2>🐍 Exercice 1 : Parité des nombres</h2>
+        <p class="enonce">
+            [cite_start]Écrire une fonction en Python qui prend en paramètre une liste de nombres entiers et qui renvoie un dictionnaire dont les clés sont les entiers de la liste et dont les valeurs sont 'pair' ou 'impair' selon la parité du nombre. [cite: 5]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>def parite_nombres(liste_nombres):
+  """
+  Prend une liste d'entiers et renvoie un dictionnaire de leur parité.
+  """
+  return {n: 'pair' if n % 2 == 0 else 'impair' for n in liste_nombres}
+
+# --- Exemple d'utilisation ---
+ma_liste = [1, 2, 3, 4, 10, 17]
+resultat = parite_nombres(ma_liste)
+print(resultat)</code></pre>
+
+        <h3>Sortie</h3>
+<pre class="output">{1: 'impair', 2: 'pair', 3: 'impair', 4: 'pair', 10: 'pair', 17: 'impair'}</pre>
+    </div>
+
+    <div class="exercise">
+        <h2>📊 Exercice 2 : Occurrences des éléments</h2>
+        <p class="enonce">
+            [cite_start]Ecrire en utilisant la méthode count(), un algorithme python sous forme de fonction qui prend en paramètre une liste d'entiers L et qui renvoie sans répétitions la liste des tuples (n, occ_n) formée des éléments n de L et de leurs occurrence occ_n. [cite: 7]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>def compter_occurrences(L):
+  """
+  Prend une liste L et renvoie la liste des tuples (n, occ_n) sans répétitions.
+  """
+  elements_uniques = set(L)
+  resultat = []
+  
+  for n in elements_uniques:
+    occ_n = L.count(n) # Utilisation de la méthode count()
+    resultat.append((n, occ_n))
+    
+  return resultat
+
+# --- Exemple d'utilisation ---
+L = [22, 7, 14, 22, 7, 14, 7, 14, 11, 7]
+resultat = compter_occurrences(L)
+print(resultat)</code></pre>
+
+        <h3>Sortie</h3>
+<pre class="output">[(7, 4), (11, 1), (14, 3), (22, 2)]</pre>
+        <p class="note">Note : L'ordre peut varier car les <code>set</code> ne sont pas ordonnés.</p>
+    </div>
+
+    <div class="exercise">
+        <h2>🗓️ Exercice 3 : Calendrier et horloge (Format 12h)</h2>
+        <p class="enonce">
+            [cite_start]Ecrire un programme python qui affiche le calendrier du mois en cours et une horloge temps réel. [cite: 10]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>import calendar
+import time
+import datetime
+
+# --- 1. Afficher le calendrier du mois en cours ---
+print("--- Calendrier du mois en cours ---")
+now = datetime.datetime.now()
+annee = now.year
+mois = now.month
+print(calendar.month(annee, mois))
+
+# --- 2. Afficher une horloge temps réel (Format 12 Heures) ---
+print("\n--- Horloge temps réel (Format 12 Heures) ---")
+print("(Appuyez sur CTRL+C pour arrêter)")
+
+try:
+  while True:
+    maintenant = datetime.datetime.now()
+    # Utiliser %I:%M:%S %p pour le format 12 heures
+    heure_actuelle = maintenant.strftime("%I:%M:%S %p") 
+    print(f"\r{heure_actuelle}", end="")
+    time.sleep(1)
+
+except KeyboardInterrupt:
+  print("\nHorloge arrêtée.")</code></pre>
+
+        <h3>Sortie (Exemple)</h3>
+<pre class="output">--- Calendrier du mois en cours ---
+   November 2025
+Mo Tu We Th Fr Sa Su
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+
+--- Horloge temps réel (Format 12 Heures) ---
+(Appuyez sur CTRL+C pour arrêter)
+03:04:15 PM 
+</pre>
+        <p class="note">
+            Note : Le code ci-dessus est une boucle infinie. Dans un terminal, il afficherait une horloge qui se met à jour. Dans ce document HTML, la sortie est juste un exemple statique.
+        </p>
+    </div>
+
+    <div class="exercise">
+        <h2>📈 Exercice 4 : Subplots Matplotlib</h2>
+        <p class="enonce">
+            [cite_start]Ecrire une fonction python qui trace et affiche les trois fonctions $sin(t)$, $cos(t)$ et $exp(-t)$ dans la même fenêtre mais sur 3 sous graphiques(subplots) séparés. [cite: 12]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>import matplotlib.pyplot as plt
+import numpy as np
+
+def tracer_fonctions():
+  """
+  Trace sin(t), cos(t) et exp(-t) sur 3 subplots séparés.
+  """
+  t = np.linspace(0, 5, 1000)
+  y_sin = np.sin(t)
+  y_cos = np.cos(t)
+  y_exp = np.exp(-t)
+  
+  fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(6, 8))
+  
+  ax1.plot(t, y_sin, 'r-')
+  ax1.set_title('sin(t)')
+  ax1.grid(True)
+  
+  ax2.plot(t, y_cos, 'g-')
+  ax2.set_title('cos(t)')
+  ax2.grid(True)
+  
+  ax3.plot(t, y_exp, 'b-')
+  ax3.set_title('exp(-t)')
+  ax3.set_xlabel('t (temps)')
+  ax3.grid(True)
+  
+  fig.tight_layout()
+  plt.show()
+
+# --- Appel de la fonction ---
+tracer_fonctions()</code></pre>
+
+        <h3>Sortie</h3>
+        <p>L'exécution de ce code Python ouvrira une nouvelle fenêtre affichant les trois graphiques suivants, empilés verticalement :</p>
+        
+        <p class="note">L'image ci-dessus est une représentation de la fenêtre qui s'ouvre lorsque vous exécutez le code.</p>
+    </div>
+    
+    <div class="exercise">
+        <h2>🐼 Exercice 5 : Sélection de lignes Pandas</h2>
+        <p class="enonce">
+            [cite_start]Écrire un programme Pandas pour sélectionner les lignes dont le score est compris entre 15 et 20 (inclusivement). [cite: 14]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>import pandas as pd
+import numpy as np
+
+# 1. Créer un exemple de DataFrame
+data = {'nom': ['Ana', 'Bruno', 'Carla', 'David', 'Elsa', 'Frank'],
+        'score': [12, 18, 20, 14.5, 21, 15]}
+df = pd.DataFrame(data)
+
+print("--- DataFrame original ---")
+print(df)
+
+# 2. Sélectionner les lignes (inclusive='both' est la valeur par défaut)
+selection = df[df['score'].between(15, 20)]
+
+print("\n--- Lignes avec score entre 15 et 20 (inclus) ---")
+print(selection)</code></pre>
+
+        <h3>Sortie</h3>
+<pre class="output">--- DataFrame original ---
+     nom  score
+0    Ana   12.0
+1  Bruno   18.0
+2  Carla   20.0
+3  David   14.5
+4   Elsa   21.0
+5  Frank   15.0
+
+--- Lignes avec score entre 15 et 20 (inclus) ---
+     nom  score
+1  Bruno   18.0
+2  Carla   20.0
+5  Frank   15.0</pre>
+    </div>
+
+    <div class="exercise">
+        <h2>↔️ Exercice 6 : Comparaison de Séries Pandas</h2>
+        <p class="enonce">
+            [cite_start]Écrire un programme Pandas pour comparer les éléments de deux séries Pandas. [cite: 16]
+            [cite_start]Sample Series: [2, 4, 6, 8, 10], [1, 3, 5, 7, 10] [cite: 17]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>import pandas as pd
+
+s1 = pd.Series([2, 4, 6, 8, 10])
+s2 = pd.Series([1, 3, 5, 7, 10])
+
+print("--- Série 1 ---")
+print(s1)
+print("\n--- Série 2 ---")
+print(s2)
+
+print("\n--- Comparaison (Égalité: s1 == s2) ---")
+print(s1 == s2)
+
+print("\n--- Comparaison (Supérieur: s1 > s2) ---")
+print(s1 > s2)</code></pre>
+
+        <h3>Sortie</h3>
+<pre class="output">--- Série 1 ---
+0     2
+1     4
+2     6
+3     8
+4    10
+dtype: int64
+
+--- Série 2 ---
+0     1
+1     3
+2     5
+3     7
+4    10
+dtype: int64
+
+--- Comparaison (Égalité: s1 == s2) ---
+0    False
+1    False
+2    False
+3    False
+4     True
+dtype: bool
+
+--- Comparaison (Supérieur: s1 > s2) ---
+0    True
+1    True
+2    True
+3    True
+4    False
+dtype: bool</pre>
+    </div>
+
+    <div class="exercise">
+        <h2>🔍 Exercice 7 : Recherche dans une liste</h2>
+        <p class="enonce">
+            [cite_start]Définir une fonction qui aura comme paramètre une liste d'entiers. [cite: 19] [cite_start]On souhaite rechercher si un entier appartient ou non à la liste. [cite: 20] On arrêtera la recherche dès qu'un élément sera trouvé. [cite_start]On affichera l'élément ainsi que sa position dans la liste. [cite: 21] [cite_start]Si l'élément n'est pas présent on affichera un commentaire. [cite: 22]
+        </p>
+        
+        <h3>Code Python</h3>
+<pre class="code"><code>def rechercher_element(liste_entiers, element_recherche):
+  """
+  Recherche un élément dans une liste et s'arrête dès qu'il est trouvé.
+  """
+  for position, valeur in enumerate(liste_entiers):
+    if valeur == element_recherche:
+      print(f"Élément {element_recherche} trouvé à la position {position}.")
+      return # Quitte la fonction
+      
+  # Ce bloc n'est atteint que si la boucle se termine sans 'return'
+  print(f"Élément {element_recherche} n'est pas présent dans la liste.")
+
+# --- Exemple 1: Élément trouvé ---
+ma_liste = [10, 20, 30, 40, 50]
+rechercher_element(ma_liste, 30)
+
+# --- Exemple 2: Élément non trouvé ---
+rechercher_element(ma_liste, 99)</code></pre>
+
+        <h3>Sortie</h3>
+<pre class="output">Élément 30 trouvé à la position 2.
+Élément 99 n'est pas présent dans la liste.</pre>
+    </div>
+    
+    <div class="exercise">
+        <h2>🗂️ Exercice 8 : Manipulation de fichiers Excel</h2>
+        <p class="enonce">
+            [cite_start]Lire et écrire des fichiers Excel en Python en utilisant pandas. [cite: 24]
+            [cite_start]Donner le type de chacune des variables du tableau Excel. [cite: 25]
+            [cite_start]Modifier une valeur de ligne précise et colonne précise. [cite: 25]
+            [cite_start]Concaténer deux liste fichiers Excel. [cite: 26]
+            [cite_start]Afficher des informations générales sur le DataFrame un utilisant info(). [cite: 27]
+            [cite_start]Afficher une colonne spécifique de ce dataFrame. [cite: 27]
+            [cite_start]Afficher une ligne spécifique de ce dataFrame. [cite: 28]
+            [cite_start]Faire une modification de quelques moyennes en utilisant la méthode replace. [cite: 29]
+            [cite_start]Filtrer les étudiants avec une moyenne $>=10$. [cite: 29]
+            [cite_start]Afficher uniquement le sexe М. [cite: 30]
+        </p>
+        
+        <p class="note">
+            <strong>Important :</strong> Ce script doit être exécuté dans un environnement Python (et non dans un navigateur) car il a besoin de créer, lire et écrire des fichiers (<code>etudiants1.xlsx</code>, <code>etudiants2.xlsx</code>) sur votre ordinateur.
+        </p>
+
+        <h3>Code Python</h3>
+<pre class="code"><code>import pandas as pd
+import os
+
+# --- ÉTAPE PRÉPARATOIRE: Créer des fichiers Excel factices ---
+data1 = {
+    'id': [1, 2, 3, 4], 'nom': ['Dupont', 'Martin', 'Durand', 'Petit'],
+    'sexe': ['M', 'M', 'F', 'M'], 'moyenne': [12.5, 9.0, 15.0, 8.5]
+}
+pd.DataFrame(data1).to_excel('etudiants1.xlsx', index=False)
+
+data2 = {
+    'id': [5, 6], 'nom': ['Leroy', 'Moreau'],
+    'sexe': ['F', 'F'], 'moyenne': [11.0, 10.0]
+}
+pd.DataFrame(data2).to_excel('etudiants2.xlsx', index=False)
+print("Fichiers Excel factices créés.\n")
+
+# [cite_start]--- 1. Lire des fichiers Excel [cite: 24] ---
+df = pd.read_excel('etudiants1.xlsx')
+print("--- 1. DataFrame (etudiants1.xlsx) lu : ---")
+print(df)
+
+# [cite_start]--- 2. Donner le type de chacune des variables [cite: 25] ---
+print("\n--- 2. Types de variables : ---")
+print(df.dtypes)
+
+# [cite_start]--- 3. Modifier une valeur [cite: 25] ---
+print("\n--- 3. Modification (moyenne de Martin de 9.0 à 9.5) : ---")
+df.loc[1, 'moyenne'] = 9.5
+print(df)
+
+# [cite_start]--- 4. Concaténer deux fichiers [cite: 26] ---
+df_extra = pd.read_excel('etudiants2.xlsx')
+df_concat = pd.concat([df, df_extra], ignore_index=True)
+print("\n--- 4. Concaténation des deux fichiers : ---")
+print(df_concat)
+
+# [cite_start]--- 5. Afficher des informations générales (.info()) [cite: 27] ---
+print("\n--- 5. Informations générales (.info()) : ---")
+df_concat.info()
+
+# [cite_start]--- 6. Afficher une colonne spécifique ('nom') [cite: 27] ---
+print("\n--- 6. Afficher la colonne 'nom' : ---")
+print(df_concat['nom'])
+
+# [cite_start]--- 7. Afficher une ligne spécifique (index 3) [cite: 28] ---
+print("\n--- 7. Afficher la ligne à l'index 3 : ---")
+print(df_concat.loc[3])
+
+# [cite_start]--- 8. Modification avec replace() [cite: 29] ---
+print("\n--- 8. Remplacement (10.0 -> 10.2) : ---")
+df_concat['moyenne'] = df_concat['moyenne'].replace(10.0, 10.2)
+print(df_concat[df_concat['sexe'] == 'F'])
+
+# [cite_start]--- 9. Filtrer (moyenne >= 10) [cite: 29] ---
+print("\n--- 9. Filtre (moyenne >= 10) : ---")
+admis = df_concat[df_concat['moyenne'] >= 10]
+print(admis)
+
+# [cite_start]--- 10. Afficher uniquement le sexe M [cite: 30] ---
+print("\n--- 10. Filtre (sexe == 'M') : ---")
+hommes = df_concat[df_concat['sexe'] == 'M']
+print(hommes)
+
+# [cite_start]--- 11. Écrire le résultat dans un nouveau fichier Excel [cite: 24] ---
+df_concat.to_excel('etudiants_complets.xlsx', index=False)
+print("\nFichier 'etudiants_complets.xlsx' sauvegardé.")
+
+# --- Nettoyage (optionnel) ---
+os.remove('etudiants1.xlsx')
+os.remove('etudiants2.xlsx')
+os.remove('etudiants_complets.xlsx')</code></pre>
+
+        <h3>Sortie Terminal (Attendue)</h3>
+<pre class="output">Fichiers Excel factices créés.
+
+--- 1. DataFrame (etudiants1.xlsx) lu : ---
+   id     nom sexe  moyenne
+0   1  Dupont    M     12.5
+1   2  Martin    M      9.0
+2   3  Durand    F     15.0
+3   4   Petit    M      8.5
+
+--- 2. Types de variables : ---
+id           int64
+nom         object
+sexe        object
+moyenne    float64
+dtype: object
+
+--- 3. Modification (moyenne de Martin de 9.0 à 9.5) : ---
+   id     nom sexe  moyenne
+0   1  Dupont    M     12.5
+1   2  Martin    M      9.5
+2   3  Durand    F     15.0
+3   4   Petit    M      8.5
+
+--- 4. Concaténation des deux fichiers : ---
+   id     nom sexe  moyenne
+0   1  Dupont    M     12.5
+1   2  Martin    M      9.5
+2   3  Durand    F     15.0
+3   4   Petit    M      8.5
+4   5   Leroy    F     11.0
+5   6  Moreau    F     10.0
+
+--- 5. Informations générales (.info()) : ---
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 6 entries, 0 to 5
+Data columns (total 4 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   id       6 non-null      int64  
+ 1   nom      6 non-null      object 
+ 2   sexe     6 non-null      object 
+ 3   moyenne  6 non-null      float64
+dtypes: float64(1), int64(1), object(2)
+memory usage: 320.0+ bytes
+
+--- 6. Afficher la colonne 'nom' : ---
+0    Dupont
+1    Martin
+2    Durand
+3     Petit
+4     Leroy
+5    Moreau
+Name: nom, dtype: object
+
+--- 7. Afficher la ligne à l'index 3 : ---
+id             4
+nom        Petit
+sexe           M
+moyenne      8.5
+Name: 3, dtype: object
+
+--- 8. Remplacement (10.0 -> 10.2) : ---
+   id     nom sexe  moyenne
+2   3  Durand    F     15.0
+4   5   Leroy    F     11.0
+5   6  Moreau    F     10.2
+
+--- 9. Filtre (moyenne >= 10) : ---
+   id     nom sexe  moyenne
+0   1  Dupont    M     12.5
+2   3  Durand    F     15.0
+4   5   Leroy    F     11.0
+5   6  Moreau    F     10.2
+
+--- 10. Filtre (sexe == 'M') : ---
+   id     nom sexe  moyenne
+0   1  Dupont    M     12.5
+1   2  Martin    M      9.5
+3   4   Petit    M      8.5
+
+Fichier 'etudiants_complets.xlsx' sauvegardé.
+</pre>
+    </div>
+
+</body>
+</html>
