@@ -91,7 +91,7 @@
     <div class="exercise">
         <h2>🐍 Exercice 1 : Parité des nombres</h2>
         <p class="enonce">
-            [cite_start]Écrire une fonction en Python qui prend en paramètre une liste de nombres entiers et qui renvoie un dictionnaire dont les clés sont les entiers de la liste et dont les valeurs sont 'pair' ou 'impair' selon la parité du nombre. [cite: 5]
+            Écrire une fonction en Python qui prend en paramètre une liste de nombres entiers et qui renvoie un dictionnaire dont les clés sont les entiers de la liste et dont les valeurs sont 'pair' ou 'impair' selon la parité du nombre
         </p>
         
         <h3>Code Python</h3>
@@ -101,7 +101,7 @@
   """
   return {n: 'pair' if n % 2 == 0 else 'impair' for n in liste_nombres}
 
-# --- Exemple d'utilisation ---
+# Exemple d'utilisation
 ma_liste = [1, 2, 3, 4, 10, 17]
 resultat = parite_nombres(ma_liste)
 print(resultat)</code></pre>
@@ -113,7 +113,7 @@ print(resultat)</code></pre>
     <div class="exercise">
         <h2>📊 Exercice 2 : Occurrences des éléments</h2>
         <p class="enonce">
-            [cite_start]Ecrire en utilisant la méthode count(), un algorithme python sous forme de fonction qui prend en paramètre une liste d'entiers L et qui renvoie sans répétitions la liste des tuples (n, occ_n) formée des éléments n de L et de leurs occurrence occ_n. [cite: 7]
+            Ecrire en utilisant la méthode count(), un algorithme python sous forme de fonction qui prend en paramètre une liste d'entiers L et qui renvoie sans répétitions la liste des tuples (n, occ_n) formée des éléments n de L et de leurs occurrence occ_n.
         </p>
         
         <h3>Code Python</h3>
@@ -130,7 +130,7 @@ print(resultat)</code></pre>
     
   return resultat
 
-# --- Exemple d'utilisation ---
+#Exemple d'utilisation 
 L = [22, 7, 14, 22, 7, 14, 7, 14, 11, 7]
 resultat = compter_occurrences(L)
 print(resultat)</code></pre>
@@ -151,15 +151,15 @@ print(resultat)</code></pre>
 import time
 import datetime
 
-# --- 1. Afficher le calendrier du mois en cours ---
-print("--- Calendrier du mois en cours ---")
+# Afficher le calendrier du mois en cours
+print(" Calendrier du mois en cours ")
 now = datetime.datetime.now()
 annee = now.year
 mois = now.month
 print(calendar.month(annee, mois))
 
-# --- 2. Afficher une horloge temps réel (Format 12 Heures) ---
-print("\n--- Horloge temps réel (Format 12 Heures) ---")
+# Afficher une horloge temps réel (Format 12 Heures) 
+print("\n Horloge temps réel (Format 12 Heures) ")
 print("(Appuyez sur CTRL+C pour arrêter)")
 
 try:
@@ -174,7 +174,7 @@ except KeyboardInterrupt:
   print("\nHorloge arrêtée.")</code></pre>
 
         <h3>Sortie (Exemple)</h3>
-<pre class="output">--- Calendrier du mois en cours ---
+<pre class="output">Calendrier du mois en cours 
    November 2025
 Mo Tu We Th Fr Sa Su
                 1  2
@@ -183,7 +183,7 @@ Mo Tu We Th Fr Sa Su
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
 
---- Horloge temps réel (Format 12 Heures) ---
+ Horloge temps réel (Format 12 Heures) 
 (Appuyez sur CTRL+C pour arrêter)
 03:04:15 PM 
 </pre>
@@ -195,7 +195,7 @@ Mo Tu We Th Fr Sa Su
     <div class="exercise">
         <h2>📈 Exercice 4 : Subplots Matplotlib</h2>
         <p class="enonce">
-            [cite_start]Ecrire une fonction python qui trace et affiche les trois fonctions $sin(t)$, $cos(t)$ et $exp(-t)$ dans la même fenêtre mais sur 3 sous graphiques(subplots) séparés. [cite: 12]
+            Ecrire une fonction python qui trace et affiche les trois fonctions $sin(t)$, $cos(t)$ et $exp(-t)$ dans la même fenêtre mais sur 3 sous graphiques(subplots) séparés. 
         </p>
         
         <h3>Code Python</h3>
@@ -229,7 +229,7 @@ def tracer_fonctions():
   fig.tight_layout()
   plt.show()
 
-# --- Appel de la fonction ---
+#  Appel de la fonction
 tracer_fonctions()</code></pre>
 
         <h3>Sortie</h3>
@@ -241,29 +241,29 @@ tracer_fonctions()</code></pre>
     <div class="exercise">
         <h2>🐼 Exercice 5 : Sélection de lignes Pandas</h2>
         <p class="enonce">
-            [cite_start]Écrire un programme Pandas pour sélectionner les lignes dont le score est compris entre 15 et 20 (inclusivement). [cite: 14]
+            Écrire un programme Pandas pour sélectionner les lignes dont le score est compris entre 15 et 20 (inclusivement). 
         </p>
         
         <h3>Code Python</h3>
 <pre class="code"><code>import pandas as pd
 import numpy as np
 
-# 1. Créer un exemple de DataFrame
+# Créer un exemple de DataFrame
 data = {'nom': ['Ana', 'Bruno', 'Carla', 'David', 'Elsa', 'Frank'],
         'score': [12, 18, 20, 14.5, 21, 15]}
 df = pd.DataFrame(data)
 
-print("--- DataFrame original ---")
+print(" DataFrame original ")
 print(df)
 
 # 2. Sélectionner les lignes (inclusive='both' est la valeur par défaut)
 selection = df[df['score'].between(15, 20)]
 
-print("\n--- Lignes avec score entre 15 et 20 (inclus) ---")
+print("\n Lignes avec score entre 15 et 20 (inclus) ")
 print(selection)</code></pre>
 
         <h3>Sortie</h3>
-<pre class="output">--- DataFrame original ---
+<pre class="output"> DataFrame original 
      nom  score
 0    Ana   12.0
 1  Bruno   18.0
@@ -272,7 +272,7 @@ print(selection)</code></pre>
 4   Elsa   21.0
 5  Frank   15.0
 
---- Lignes avec score entre 15 et 20 (inclus) ---
+Lignes avec score entre 15 et 20 (inclus) 
      nom  score
 1  Bruno   18.0
 2  Carla   20.0
@@ -282,8 +282,8 @@ print(selection)</code></pre>
     <div class="exercise">
         <h2>↔️ Exercice 6 : Comparaison de Séries Pandas</h2>
         <p class="enonce">
-            [cite_start]Écrire un programme Pandas pour comparer les éléments de deux séries Pandas. [cite: 16]
-            [cite_start]Sample Series: [2, 4, 6, 8, 10], [1, 3, 5, 7, 10] [cite: 17]
+           Écrire un programme Pandas pour comparer les éléments de deux séries Pandas
+           Sample Series: [2, 4, 6, 8, 10], [1, 3, 5, 7, 10] 
         </p>
         
         <h3>Code Python</h3>
@@ -292,19 +292,19 @@ print(selection)</code></pre>
 s1 = pd.Series([2, 4, 6, 8, 10])
 s2 = pd.Series([1, 3, 5, 7, 10])
 
-print("--- Série 1 ---")
+print("Série 1 ")
 print(s1)
-print("\n--- Série 2 ---")
+print("\n Série 2 ")
 print(s2)
 
-print("\n--- Comparaison (Égalité: s1 == s2) ---")
+print("\n Comparaison (Égalité: s1 == s2) ")
 print(s1 == s2)
 
-print("\n--- Comparaison (Supérieur: s1 > s2) ---")
+print("\n Comparaison (Supérieur: s1 > s2) ")
 print(s1 > s2)</code></pre>
 
         <h3>Sortie</h3>
-<pre class="output">--- Série 1 ---
+<pre class="output"> Série 1 
 0     2
 1     4
 2     6
@@ -312,7 +312,7 @@ print(s1 > s2)</code></pre>
 4    10
 dtype: int64
 
---- Série 2 ---
+ Série 2 
 0     1
 1     3
 2     5
@@ -320,7 +320,7 @@ dtype: int64
 4    10
 dtype: int64
 
---- Comparaison (Égalité: s1 == s2) ---
+Comparaison (Égalité: s1 == s2)
 0    False
 1    False
 2    False
@@ -328,7 +328,7 @@ dtype: int64
 4     True
 dtype: bool
 
---- Comparaison (Supérieur: s1 > s2) ---
+Comparaison (Supérieur: s1 > s2)
 0    True
 1    True
 2    True
@@ -340,7 +340,7 @@ dtype: bool</pre>
     <div class="exercise">
         <h2>🔍 Exercice 7 : Recherche dans une liste</h2>
         <p class="enonce">
-            [cite_start]Définir une fonction qui aura comme paramètre une liste d'entiers. [cite: 19] [cite_start]On souhaite rechercher si un entier appartient ou non à la liste. [cite: 20] On arrêtera la recherche dès qu'un élément sera trouvé. [cite_start]On affichera l'élément ainsi que sa position dans la liste. [cite: 21] [cite_start]Si l'élément n'est pas présent on affichera un commentaire. [cite: 22]
+            Définir une fonction qui aura comme paramètre une liste d'entiers. On souhaite rechercher si un entier appartient ou non à la liste. On arrêtera la recherche dès qu'un élément sera trouvé. On affichera l'élément ainsi que sa position dans la liste.Si l'élément n'est pas présent on affichera un commentaire. 
         </p>
         
         <h3>Code Python</h3>
@@ -356,11 +356,11 @@ dtype: bool</pre>
   # Ce bloc n'est atteint que si la boucle se termine sans 'return'
   print(f"Élément {element_recherche} n'est pas présent dans la liste.")
 
-# --- Exemple 1: Élément trouvé ---
+ Exemple 1: Élément trouvé 
 ma_liste = [10, 20, 30, 40, 50]
 rechercher_element(ma_liste, 30)
 
-# --- Exemple 2: Élément non trouvé ---
+ Exemple 2: Élément non trouvé
 rechercher_element(ma_liste, 99)</code></pre>
 
         <h3>Sortie</h3>
@@ -391,7 +391,7 @@ rechercher_element(ma_liste, 99)</code></pre>
 <pre class="code"><code>import pandas as pd
 import os
 
-# --- ÉTAPE PRÉPARATOIRE: Créer des fichiers Excel factices ---
+#  ÉTAPE PRÉPARATOIRE: Créer des fichiers Excel factices 
 data1 = {
     'id': [1, 2, 3, 4], 'nom': ['Dupont', 'Martin', 'Durand', 'Petit'],
     'sexe': ['M', 'M', 'F', 'M'], 'moyenne': [12.5, 9.0, 15.0, 8.5]
@@ -405,58 +405,58 @@ data2 = {
 pd.DataFrame(data2).to_excel('etudiants2.xlsx', index=False)
 print("Fichiers Excel factices créés.\n")
 
-# [cite_start]--- 1. Lire des fichiers Excel [cite: 24] ---
+# [cite_start] 1. Lire des fichiers Excel [cite: 24] 
 df = pd.read_excel('etudiants1.xlsx')
-print("--- 1. DataFrame (etudiants1.xlsx) lu : ---")
+print(" DataFrame (etudiants1.xlsx) lu : ")
 print(df)
 
-# [cite_start]--- 2. Donner le type de chacune des variables [cite: 25] ---
-print("\n--- 2. Types de variables : ---")
+# [cite_start] Donner le type de chacune des variables [cite: 25] 
+print("\n  Types de variables : ")
 print(df.dtypes)
 
-# [cite_start]--- 3. Modifier une valeur [cite: 25] ---
-print("\n--- 3. Modification (moyenne de Martin de 9.0 à 9.5) : ---")
+# [cite_start]  Modifier une valeur [cite: 25] 
+print("\n Modification (moyenne de Martin de 9.0 à 9.5) : ")
 df.loc[1, 'moyenne'] = 9.5
 print(df)
 
-# [cite_start]--- 4. Concaténer deux fichiers [cite: 26] ---
+# [cite_start] Concaténer deux fichiers [cite: 26] 
 df_extra = pd.read_excel('etudiants2.xlsx')
 df_concat = pd.concat([df, df_extra], ignore_index=True)
-print("\n--- 4. Concaténation des deux fichiers : ---")
+print("\n Concaténation des deux fichiers : ")
 print(df_concat)
 
-# [cite_start]--- 5. Afficher des informations générales (.info()) [cite: 27] ---
-print("\n--- 5. Informations générales (.info()) : ---")
+# [cite_start] Afficher des informations générales (.info()) [cite: 27]
+print("\n Informations générales (.info()) : ")
 df_concat.info()
 
-# [cite_start]--- 6. Afficher une colonne spécifique ('nom') [cite: 27] ---
-print("\n--- 6. Afficher la colonne 'nom' : ---")
+# [cite_start] Afficher une colonne spécifique ('nom') [cite: 27]
+print(" Afficher la colonne 'nom' : ")
 print(df_concat['nom'])
 
-# [cite_start]--- 7. Afficher une ligne spécifique (index 3) [cite: 28] ---
-print("\n--- 7. Afficher la ligne à l'index 3 : ---")
+# [cite_start] Afficher une ligne spécifique (index 3) [cite: 28] 
+print("\n Afficher la ligne à l'index 3 : ")
 print(df_concat.loc[3])
 
-# [cite_start]--- 8. Modification avec replace() [cite: 29] ---
-print("\n--- 8. Remplacement (10.0 -> 10.2) : ---")
+# [cite_start] Modification avec replace() [cite: 29] 
+print("\n  Remplacement (10.0 -> 10.2) : ")
 df_concat['moyenne'] = df_concat['moyenne'].replace(10.0, 10.2)
 print(df_concat[df_concat['sexe'] == 'F'])
 
-# [cite_start]--- 9. Filtrer (moyenne >= 10) [cite: 29] ---
-print("\n--- 9. Filtre (moyenne >= 10) : ---")
+# [cite_start] Filtrer (moyenne >= 10) [cite: 29] 
+print("\n Filtre (moyenne >= 10) : ")
 admis = df_concat[df_concat['moyenne'] >= 10]
 print(admis)
 
-# [cite_start]--- 10. Afficher uniquement le sexe M [cite: 30] ---
-print("\n--- 10. Filtre (sexe == 'M') : ---")
+# [cite_start]  Afficher uniquement le sexe M [cite: 30] 
+print("\n  Filtre (sexe == 'M') : ")
 hommes = df_concat[df_concat['sexe'] == 'M']
 print(hommes)
 
-# [cite_start]--- 11. Écrire le résultat dans un nouveau fichier Excel [cite: 24] ---
+# [cite_start] Écrire le résultat dans un nouveau fichier Excel [cite: 24] 
 df_concat.to_excel('etudiants_complets.xlsx', index=False)
 print("\nFichier 'etudiants_complets.xlsx' sauvegardé.")
 
-# --- Nettoyage (optionnel) ---
+# Nettoyage (optionnel) 
 os.remove('etudiants1.xlsx')
 os.remove('etudiants2.xlsx')
 os.remove('etudiants_complets.xlsx')</code></pre>
@@ -464,28 +464,28 @@ os.remove('etudiants_complets.xlsx')</code></pre>
         <h3>Sortie Terminal (Attendue)</h3>
 <pre class="output">Fichiers Excel factices créés.
 
---- 1. DataFrame (etudiants1.xlsx) lu : ---
+ DataFrame (etudiants1.xlsx) lu : 
    id     nom sexe  moyenne
 0   1  Dupont    M     12.5
 1   2  Martin    M      9.0
 2   3  Durand    F     15.0
 3   4   Petit    M      8.5
 
---- 2. Types de variables : ---
+ Types de variables : 
 id           int64
 nom         object
 sexe        object
 moyenne    float64
 dtype: object
 
---- 3. Modification (moyenne de Martin de 9.0 à 9.5) : ---
+ Modification (moyenne de Martin de 9.0 à 9.5) : 
    id     nom sexe  moyenne
 0   1  Dupont    M     12.5
 1   2  Martin    M      9.5
 2   3  Durand    F     15.0
 3   4   Petit    M      8.5
 
---- 4. Concaténation des deux fichiers : ---
+ Concaténation des deux fichiers : 
    id     nom sexe  moyenne
 0   1  Dupont    M     12.5
 1   2  Martin    M      9.5
@@ -494,7 +494,7 @@ dtype: object
 4   5   Leroy    F     11.0
 5   6  Moreau    F     10.0
 
---- 5. Informations générales (.info()) : ---
+ Informations générales (.info()) : 
 &lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 6 entries, 0 to 5
 Data columns (total 4 columns):
@@ -507,7 +507,7 @@ Data columns (total 4 columns):
 dtypes: float64(1), int64(1), object(2)
 memory usage: 320.0+ bytes
 
---- 6. Afficher la colonne 'nom' : ---
+ Afficher la colonne 'nom' : 
 0    Dupont
 1    Martin
 2    Durand
@@ -516,27 +516,27 @@ memory usage: 320.0+ bytes
 5    Moreau
 Name: nom, dtype: object
 
---- 7. Afficher la ligne à l'index 3 : ---
+ Afficher la ligne à l'index 3 :
 id             4
 nom        Petit
 sexe           M
 moyenne      8.5
 Name: 3, dtype: object
 
---- 8. Remplacement (10.0 -> 10.2) : ---
+ Remplacement (10.0 -> 10.2) : 
    id     nom sexe  moyenne
 2   3  Durand    F     15.0
 4   5   Leroy    F     11.0
 5   6  Moreau    F     10.2
 
---- 9. Filtre (moyenne >= 10) : ---
+ Filtre (moyenne >= 10) : 
    id     nom sexe  moyenne
 0   1  Dupont    M     12.5
 2   3  Durand    F     15.0
 4   5   Leroy    F     11.0
 5   6  Moreau    F     10.2
 
---- 10. Filtre (sexe == 'M') : ---
+  Filtre (sexe == 'M') : 
    id     nom sexe  moyenne
 0   1  Dupont    M     12.5
 1   2  Martin    M      9.5
@@ -547,7 +547,7 @@ Fichier 'etudiants_complets.xlsx' sauvegardé.
     </div>
 <footer class="text-center mt-12 py-6 bg-slate-100 border-t border-slate-300">
     <p class="text-base font-semibold text-slate-700">
-        © 2025 – Projet CANopen M241 & ATV32 réalisé par 
+        © 2025 – TP réalisé par 
         <span class="text-blue-800 font-bold">Dahane Ahmed Lamine</span>
     </p>
 </footer>
