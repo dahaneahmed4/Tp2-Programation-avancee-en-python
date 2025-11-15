@@ -16,11 +16,11 @@ Les scripts couvrent une variété de concepts Python fondamentaux et avancés :
 * [cite_start]**Exercice 6 :** Comparaison élément par élément de deux Séries Pandas[cite: 16].
 * [cite_start]**Exercice 7 :** Fonction de recherche séquentielle dans une liste, avec arrêt dès la première trouvaille[cite: 19, 20, 21].
 * **Exercice 8 :** Manipulation complète de fichiers Excel avec Pandas, incluant :
-    * [cite_start]Lecture (`read_excel`) et écriture (`to_excel`)[cite: 24].
-    * [cite_start]Vérification des types de données (`.dtypes`)[cite: 25].
-    * [cite_start]Modification de valeurs spécifiques (`.loc`)[cite: 25].
-    * [cite_start]Concaténation de DataFrames[cite: 26].
-    * [cite_start]Affichage d'informations (`.info()`)[cite: 27].
-    * [cite_start]Sélection de lignes et colonnes[cite: 27, 28].
-    * [cite_start]Remplacement de valeurs (`.replace()`)[cite: 29].
-    * [cite_start]Filtrage avancé (par moyenne et par sexe)[cite: 29, 30].
+    * [cite_start]Lecture (`read_excel`) et écriture (`to_excel`).
+    * [cite_start]Vérification des types de données (`.dtypes`).
+    * [cite_start]Modification de valeurs spécifiques (`.loc`).
+    * [cite_start]Concaténation de DataFrames.
+    * [cite_start]Affichage d'informations (`.info()`).
+    * [cite_start]Sélection de lignes et colonnes.
+    * [cite_start]Remplacement de valeurs (`.replace()`).
+    * [cite_start]Filtrage avancé (par moyenne et par sexe).
